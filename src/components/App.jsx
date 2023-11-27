@@ -25,6 +25,15 @@ export default function App() {
   }, [dispatch]);
 
   const handleSubmit = (name, number) => {
+    const contactExists = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (contactExists) {
+      alert(`Contact with the name ${name} already exists.`);
+      return;
+    }
+
     dispatch(addContact({ name, number }));
   };
 
